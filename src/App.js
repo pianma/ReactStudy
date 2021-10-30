@@ -1,44 +1,27 @@
 import React from "react";
 
+class App extends React.Component {
+  state = {
+    count : 0,
+  };
 
-function Food({name, size}) {
-  return (
+  up = () => {
+    this.setState({ count : this.state.count + 1});
+  };
+
+  down = () => {
+    this.setState({count : this.state.count - 1});
+  };
+
+  render(){
+    return (
     <div>
-    <h1>{name} {size}</h1>
+     <h1>the number is {this.state.count}</h1>
+    <button onClick={this.up}>up</button>
+    <button  onClick={this.down}>down</button>
     </div>
-  )
+    );
+  }
 }
-
-const foodLike = [
-  {
-    id : 1,
-    name : 'kimchi',
-    size : 'small',
-  },
-  {
-    id : 2,
-    name : 'sozu',
-    size : 'medium',
-  },
-  {
-    id : 3,
-    name : 'mackzu',
-    size : 'big',
-  },
-];
-
-function renderFood(dish){
-  return <Food name={dish.name} size={dish.size} key={dish.id}/>;
-}
-
-function App() {
-  return( 
-  <div>
-    {foodLike.map(renderFood)}
-  </div>
-  );
-}
-
-
 
 export default App;
